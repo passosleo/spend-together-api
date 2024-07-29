@@ -2,7 +2,7 @@ import { ISpendCategoryRepository } from '../../../domain/repositories/spend-cat
 import { SpendCategoryResponseDTO } from '../../../infra/http/dtos/spend-category/spend-category-response-dto';
 
 export class ListSpendCategoriesUseCase {
-  constructor(private spendCategoryRepository: ISpendCategoryRepository) {}
+  constructor(private readonly spendCategoryRepository: ISpendCategoryRepository) {}
 
   public async execute(): Promise<SpendCategoryResponseDTO[]> {
     const spendCategories = await this.spendCategoryRepository.findAll();

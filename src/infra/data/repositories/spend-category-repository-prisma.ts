@@ -5,7 +5,11 @@ import { prisma } from '../db';
 
 export class SpendCategoryRepositoryPrisma implements ISpendCategoryRepository {
   public async findAll(): Promise<SpendCategory[]> {
-    const models = await prisma.spendCategory.findMany();
-    return models.map((model) => SpendCategoryMapper.toDomain(model));
+    try {
+      const models = await prisma.spendCategory.findMany();
+      return models.map((model) => SpendCategoryMapper.toDomain(model));
+    } finally {
+      await prisma.$disconnect();
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { Route } from '../../types/generic';
+import { notificationRoutes } from './notification/notification-routes';
 import { privacyPolicyRoutes } from './privacy-policy/privacy-policy-routes';
 import { signInRoutes } from './sign-in/sign-in-routes';
 import { signUpRoutes } from './sign-up/sign-up-routes';
@@ -11,4 +12,5 @@ export const routes: Route[] = [
   ...userRoutes,
   ...privacyPolicyRoutes,
   ...spendCategoryRoutes,
+  ...notificationRoutes,
 ];

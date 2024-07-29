@@ -1,4 +1,4 @@
-export class CreateUserData {
+export interface CreateUserData {
   userId?: string;
   email: string;
   emailVerified?: boolean;

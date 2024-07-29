@@ -1,4 +1,4 @@
-import { UserUniqueKeyDTO } from '../../../domain/repositories/user/user-repository.types';
+import { UserUniqueKeyData } from '../../../domain/repositories/user/user-repository.types';
 import { IUserRepository } from '../../../domain/repositories/user/user-repository';
 import { UserMapper } from '../mappers/user-mapper';
 import { User } from '../../../domain/entities/user';
@@ -50,7 +50,7 @@ export class UserRepositoryPrisma implements IUserRepository {
     }
   }
 
-  async findByUniqueKey(data: UserUniqueKeyDTO): Promise<User | null> {
+  async findByUniqueKey(data: UserUniqueKeyData): Promise<User | null> {
     try {
       const model = await prisma.user.findFirst({ where: data });
 

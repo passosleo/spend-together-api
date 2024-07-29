@@ -5,7 +5,11 @@ import { PrivacyPolicyMapper } from '../mappers/privacy-policy-mapper';
 
 export class PrivacyPolicyRepositoryPrisma implements IPrivacyPolicyRepository {
   public async findFirst(): Promise<PrivacyPolicy | null> {
-    const model = await prisma.privacyPolicy.findFirst();
-    return model ? PrivacyPolicyMapper.toDomain(model) : null;
+    try {
+      const model = await prisma.privacyPolicy.findFirst();
+      return model ? PrivacyPolicyMapper.toDomain(model) : null;
+    } finally {
+      await prisma.$disconnect();
+    }
   }
 }
