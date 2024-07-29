@@ -1,0 +1,13 @@
+h1 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  margin: 2rem 0;
+  font-weight: 500;
+}
+
+#success-screen {
+  display: none;
+}
+

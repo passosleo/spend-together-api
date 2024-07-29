@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Spends" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/public/resources/global/styles/styles.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/public/resources/<%- page %>/styles/styles.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Spends</title>
+    <script
+      type="text/javascript"
+      src="/public/resources/<%- page %>/js/index.js"
+    ></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div id="loader"></div>
+      <%- body %>
+      <section id="error-screen">
+        <img
+          src="/public/resources/global/assets/error.png"
+          alt="Error"
+          class="error"
+        />
+        <p>Ops, parece que este link expirou</p>
+        <p>Por favor, solicite novamente</p>
+      </section>
+    </main>
+  </body>
+</html>
