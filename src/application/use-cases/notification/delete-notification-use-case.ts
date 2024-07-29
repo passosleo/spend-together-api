@@ -10,10 +10,10 @@ export class DeleteNotificationUseCase {
 
   public async execute(notificationId: string): Promise<void> {
     const userAccount = this.authProvider.getAuthenticatedUser();
-    const notification = await this.notificationsRepository.findOneByUser(notificationId, userAccount.userId);
+    const notification = await this.notificationsRepository.findOne(notificationId, userAccount.userId);
     if (!notification) {
       throw new Exception('NOT_FOUND', 'Notification not found');
     }
-    await this.notificationsRepository.deleteByUser(notificationId, userAccount.userId);
+    await this.notificationsRepository.delete(notificationId, userAccount.userId);
   }
 }

@@ -5,7 +5,7 @@ import { prisma } from '../db';
 import { NotificationMapper } from '../mappers/notification-mapper';
 
 export class NotificationRepositoryPrisma implements INotificationRepository {
-  async countByUser(userId: string, data: CountNotificationData): Promise<number> {
+  async count(userId: string, data: CountNotificationData): Promise<number> {
     try {
       return await prisma.notification.count({
         where: { ...data, userId },
@@ -15,7 +15,7 @@ export class NotificationRepositoryPrisma implements INotificationRepository {
     }
   }
 
-  async findOneByUser(notificationId: string, userId: string): Promise<Notification | null> {
+  async findOne(notificationId: string, userId: string): Promise<Notification | null> {
     try {
       const model = await prisma.notification.findFirst({
         where: {
@@ -30,7 +30,7 @@ export class NotificationRepositoryPrisma implements INotificationRepository {
     }
   }
 
-  async findAllByUser(userId: string): Promise<Notification[]> {
+  async findAll(userId: string): Promise<Notification[]> {
     try {
       const models = await prisma.notification.findMany({
         where: { userId },
@@ -53,7 +53,7 @@ export class NotificationRepositoryPrisma implements INotificationRepository {
     }
   }
 
-  async updateByUser(notificationId: string, userId: string, data: Partial<Notification>): Promise<Notification> {
+  async update(notificationId: string, userId: string, data: Partial<Notification>): Promise<Notification> {
     try {
       const model = await prisma.notification.update({
         where: { notificationId, userId },
@@ -66,7 +66,7 @@ export class NotificationRepositoryPrisma implements INotificationRepository {
     }
   }
 
-  async deleteByUser(notificationId: string, userId: string): Promise<Notification> {
+  async delete(notificationId: string, userId: string): Promise<Notification> {
     try {
       const model = await prisma.notification.delete({
         where: { notificationId, userId },

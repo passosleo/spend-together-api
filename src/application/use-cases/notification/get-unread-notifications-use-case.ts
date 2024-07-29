@@ -10,7 +10,7 @@ export class GetUnreadNotificationsUseCase {
 
   public async execute(): Promise<UnreadNotificationResponseDTO> {
     const userAccount = this.authProvider.getAuthenticatedUser();
-    const total = await this.notificationsRepository.countByUser(userAccount.userId, { isRead: false });
+    const total = await this.notificationsRepository.count(userAccount.userId, { isRead: false });
     return UnreadNotificationResponseDTO.create({ hasUnread: total > 0, total });
   }
 }

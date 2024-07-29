@@ -10,10 +10,10 @@ export class ListNotificationsUseCase {
 
   public async execute(): Promise<NotificationResponseDTO[]> {
     const userAccount = this.authProvider.getAuthenticatedUser();
-    const notifications = await this.notificationRepository.findAllByUser(userAccount.userId);
+    const notifications = await this.notificationRepository.findAll(userAccount.userId);
 
     const setAllRead = notifications.map((notification) =>
-      this.notificationRepository.updateByUser(notification.notificationId, userAccount.userId, {
+      this.notificationRepository.update(notification.notificationId, userAccount.userId, {
         isRead: true,
       }),
     );
