@@ -20,10 +20,6 @@ export class ListSpendControlsUseCase {
 
     const spendControlsWithBalance = await Promise.all(
       spendControls.map(async (spendControl) => {
-        console.log(
-          'ListSpendControlsUseCase ~ spendControls.map ~ spendControl',
-          JSON.stringify(spendControl, null, 2),
-        );
         const balance = await this.calculateBalance(spendControl, userAccount);
 
         return SpendControlResponseDTO.create({
