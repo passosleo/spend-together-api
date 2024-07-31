@@ -14,10 +14,15 @@ export class Helpers implements IHelpers {
   password: IPasswordHelper;
   number: INumberHelper;
 
-  constructor() {
-    this.date = new DateHelper();
-    this.encryption = new EncryptionHelper();
-    this.password = new PasswordHelper();
-    this.number = new NumberHelper();
+  constructor(
+    date?: IDateHelper | null,
+    encryption?: IEncryptionHelper | null,
+    password?: IPasswordHelper | null,
+    number?: INumberHelper | null,
+  ) {
+    this.date = date ?? new DateHelper();
+    this.encryption = encryption ?? new EncryptionHelper();
+    this.password = password ?? new PasswordHelper();
+    this.number = number ?? new NumberHelper();
   }
 }
