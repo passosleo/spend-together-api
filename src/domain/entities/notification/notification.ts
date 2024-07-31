@@ -33,7 +33,7 @@ export class Notification {
     this.updatedAt = data.updatedAt ?? new Date();
   }
 
-  public static create(data: Notification): Notification {
+  public static create(data: CreateNotificationData): Notification {
     return new Notification(data);
   }
 }
