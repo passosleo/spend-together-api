@@ -9,6 +9,7 @@ import { Exception } from '../../../infra/exception';
 import { CreateSpendControlRequestDTO } from '../../../infra/http/dtos/spend-control/create-spend-control-request-dto';
 import { SpendControlResponseDTO } from '../../../infra/http/dtos/spend-control/spend-control-response-dto';
 import { IAuthProvider } from '../../providers/auth/auth-provider.types';
+import { SpendBalance } from '../../../domain/entities/spend/spend-balance';
 
 export class CreateSpendControlUseCase {
   constructor(
@@ -54,10 +55,7 @@ export class CreateSpendControlUseCase {
 
     return SpendControlResponseDTO.create({
       ...createdSpendControl,
-      balance: 0,
-      totalSpent: 0,
-      totalSpentByUser: 0,
-      totalSpentByOthers: 0,
+      ...SpendBalance.create(),
     });
   }
 
