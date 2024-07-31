@@ -6,6 +6,8 @@ import { CreateSpendControlSchema } from '../../schemas/spend-control/create-spe
 import { CreateSpendControlController } from '../../controllers/spend-control/create-spend-control-controller';
 import { UpdateSpendControlSchema } from '../../schemas/spend-control/update-spend-control-schema';
 import { UpdateSpendControlController } from '../../controllers/spend-control/update-spend-control-controller';
+import { DeleteSpendControlController } from '../../controllers/spend-control/delete-spend-control-controller';
+import { DeleteSpendControlSchema } from '../../schemas/spend-control/delete-spend-control-schema';
 
 export const spendControlRoutes: Route[] = [
   {
@@ -34,5 +36,12 @@ export const spendControlRoutes: Route[] = [
     auth: true,
     schema: UpdateSpendControlSchema,
     controller: UpdateSpendControlController.handle,
+  },
+  {
+    path: '/api/v1/spend-control/:spendControlId',
+    method: 'DELETE',
+    auth: true,
+    schema: DeleteSpendControlSchema,
+    controller: DeleteSpendControlController.handle,
   },
 ];

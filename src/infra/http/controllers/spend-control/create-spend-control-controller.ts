@@ -75,7 +75,7 @@ export class CreateSpendControlController {
     try {
       const sut = CreateSpendControlUseCaseFactory.create(req.account);
       const response = await sut.execute(CreateSpendControlRequestDTO.create(req.body));
-      return res.sendResponse(200, response);
+      return res.sendResponse(201, response);
     } catch (error) {
       next(error);
     }
