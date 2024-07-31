@@ -5,7 +5,7 @@ import { config } from '../../../config/app.config';
 import { IMailService, MailTemplate, SendMailData } from '../../../application/services/mail/mail-service.types';
 import { Logger } from '../../utils/logger';
 
-export class MailService implements IMailService {
+export class MailServiceNodemailer implements IMailService {
   private readonly transporter: Transporter;
 
   constructor() {
