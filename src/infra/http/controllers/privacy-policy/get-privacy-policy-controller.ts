@@ -22,7 +22,7 @@ export class GetPrivacyPolicyController {
    *                   example: 200
    *                 message:
    *                   type: string
-   *                   example: 'Ok'
+   *                   example: 'OK'
    *                 data:
    *                   $ref: '#/components/schemas/PrivacyPolicyResponseDTO'
    *       500:

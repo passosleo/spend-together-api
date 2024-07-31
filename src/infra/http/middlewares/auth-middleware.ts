@@ -19,7 +19,6 @@ export async function authenticationMiddleware(req: Request, res: Response, next
 
     if (!authorization) {
       return res.sendResponse(HttpStatusCode.UNAUTHORIZED, {
-        success: false,
         errors: [
           {
             message: 'Authorization header not found',
@@ -43,7 +42,6 @@ export async function authenticationMiddleware(req: Request, res: Response, next
     next();
   } catch {
     return res.sendResponse(HttpStatusCode.UNAUTHORIZED, {
-      success: false,
       errors: [
         {
           message: 'Invalid token',

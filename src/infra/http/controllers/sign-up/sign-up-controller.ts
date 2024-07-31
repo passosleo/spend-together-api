@@ -31,7 +31,7 @@ export class SignUpController {
    *                   example: 200
    *                 message:
    *                   type: string
-   *                   example: 'Ok'
+   *                   example: 'OK'
    *                 data:
    *                   $ref: '#/components/schemas/SignUpResponseDTO'
    *       400:

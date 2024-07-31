@@ -33,7 +33,7 @@ export class UpdateUserController {
    *                   example: 200
    *                 message:
    *                   type: string
-   *                   example: 'Ok'
+   *                   example: 'OK'
    *                 data:
    *                   $ref: '#/components/schemas/UserAccountDTO'
    *       400:

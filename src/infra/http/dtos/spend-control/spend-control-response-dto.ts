@@ -38,7 +38,7 @@ import { SpendControlUserDTO } from './spend-control-user-dto';
  *           type: number
  *         totalSpentByUser:
  *           type: number
- *         totalSpentByOtherUser:
+ *         totalSpentByOthers:
  *           type: number
  */
 export class SpendControlResponseDTO {
@@ -54,7 +54,7 @@ export class SpendControlResponseDTO {
   balance: number;
   totalSpent: number;
   totalSpentByUser: number;
-  totalSpentByOtherUser: number;
+  totalSpentByOthers: number;
 
   constructor(data: Omit<SpendControlResponseDTO, 'isShared'>) {
     this.spendControlId = data.spendControlId;
@@ -69,7 +69,7 @@ export class SpendControlResponseDTO {
     this.balance = data.balance;
     this.totalSpent = data.totalSpent;
     this.totalSpentByUser = data.totalSpentByUser;
-    this.totalSpentByOtherUser = data.totalSpentByOtherUser;
+    this.totalSpentByOthers = data.totalSpentByOthers;
   }
 
   public static create(data: Omit<SpendControlResponseDTO, 'isShared'>): SpendControlResponseDTO {

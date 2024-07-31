@@ -30,7 +30,6 @@ export function validationMiddleware<T>(schema: RequestSchema<T>) {
       next();
     } else {
       return res.sendResponse(HttpStatusCode.BAD_REQUEST, {
-        success: false,
         errors: JSON.parse(validation.error.message) as ZodIssue[],
       });
     }

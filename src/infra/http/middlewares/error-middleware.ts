@@ -21,7 +21,6 @@ export async function errorMiddleware(error: Error, req: Request, res: Response,
     }
 
     return res.sendResponse(error.statusCode, {
-      success: false,
       errors: [
         {
           message: error.message,

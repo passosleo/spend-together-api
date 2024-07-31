@@ -1,17 +1,13 @@
-import { UserAccountDTO } from '../../../domain/dtos/user/user-account-dto';
-import { SpendControl } from '../../../domain/entities/spend-control/spend-control';
 import { ISpendControlRepository } from '../../../domain/repositories/spend-control/spend-control-repository';
-import { ISpendRepository } from '../../../domain/repositories/spend/spend-repository';
 import { SpendControlResponseDTO } from '../../../infra/http/dtos/spend-control/spend-control-response-dto';
-import { IHelpers } from '../../helpers/helpers.types';
 import { IAuthProvider } from '../../providers/auth/auth-provider.types';
+import { ISpendCalculatorService } from '../../services/spend/spend-calculator-service.types';
 
 export class ListSpendControlsUseCase {
   constructor(
     private readonly authProvider: IAuthProvider,
     private readonly spendControlRepository: ISpendControlRepository,
-    private readonly spendRepository: ISpendRepository,
-    private readonly helpers: IHelpers,
+    private readonly spendCalculatorService: ISpendCalculatorService,
   ) {}
 
   public async execute(): Promise<SpendControlResponseDTO[]> {
@@ -20,7 +16,7 @@ export class ListSpendControlsUseCase {
 
     const spendControlsWithBalance = await Promise.all(
       spendControls.map(async (spendControl) => {
-        const balance = await this.calculateBalance(spendControl, userAccount);
+        const balance = await this.spendCalculatorService.calculateBalance(spendControl, userAccount.userId);
 
         return SpendControlResponseDTO.create({
           ...spendControl,
@@ -30,28 +26,5 @@ export class ListSpendControlsUseCase {
     );
 
     return spendControlsWithBalance;
-  }
-
-  private async calculateBalance(spendControl: SpendControl, user: UserAccountDTO) {
-    const otherUser = spendControl.users.find((item) => item.user.userId !== user.userId);
-
-    const totalByUsers = await Promise.all([
-      this.spendRepository.sumTotalSpent(spendControl.spendControlId, user.userId),
-      otherUser ? this.spendRepository.sumTotalSpent(spendControl.spendControlId, otherUser.user.userId) : 0,
-    ]);
-
-    const [totalSpentByUser, totalSpentByOtherUser] = totalByUsers.map((total) =>
-      this.helpers.number.formatDecimal(total),
-    );
-
-    const totalSpent = this.helpers.number.formatDecimal(totalSpentByUser + totalSpentByOtherUser);
-    const balance = this.helpers.number.formatDecimal(totalSpentByUser - totalSpentByOtherUser);
-
-    return {
-      balance,
-      totalSpent,
-      totalSpentByUser,
-      totalSpentByOtherUser,
-    };
   }
 }

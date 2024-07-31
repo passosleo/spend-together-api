@@ -24,7 +24,7 @@ export class GetUserInfoController {
    *                   example: 200
    *                 message:
    *                   type: string
-   *                   example: 'Ok'
+   *                   example: 'OK'
    *                 data:
    *                   $ref: '#/components/schemas/UserDTO'
    *       401:

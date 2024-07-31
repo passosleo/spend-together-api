@@ -32,7 +32,7 @@ export const ResponseMessages = {
    *           default: 200
    *         message:
    *           type: string
-   *           default: Ok
+   *           default: OK
    */
   [HttpStatusCode.OK]: 'OK',
   /**
