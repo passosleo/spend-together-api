@@ -12,7 +12,7 @@ export class SendVerifyEmailController {
    *       - Sign Up
    *     summary: Verify email send
    *     requestBody:
-   *       description: SendVerifyEmailDTO
+   *       description: SendVerifyEmailRequestDTO
    *       required: true
    *       content:
    *         application/json:

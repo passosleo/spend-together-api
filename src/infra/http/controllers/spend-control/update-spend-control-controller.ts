@@ -1,28 +1,35 @@
 import { Response, NextFunction } from 'express';
 import { TypedRequest } from '../../../types/generic';
-import { CreateSpendControlUseCaseFactory } from '../../../factories/spend-control/create-spend-control-use-case-factory';
-import { CreateSpendControlRequestDTO } from '../../dtos/spend-control/create-spend-control-request-dto';
+import { UpdateSpendControlRequestDTO } from '../../dtos/spend-control/update-spend-control-request-dto';
+import { UpdateSpendControlUseCaseFactory } from '../../../factories/spend-control/update-spend-control-use-case-factory';
 
-export class CreateSpendControlController {
+export class UpdateSpendControlController {
   /**
    * @openapi
-   * /api/v1/spend-control:
-   *   post:
+   * /api/v1/spend-control/{spendControlId}:
+   *   put:
    *     tags:
    *       - Spend Control
-   *     summary: Create spend control
+   *     summary: Update spend control
    *     security:
    *       - JWTAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: spendControlId
+   *         required: true
+   *         schema:
+   *           type: string
+   *           format: uuid
    *     requestBody:
-   *       description: CreateSpendControlRequestDTO
+   *       description: UpdateSpendControlRequestDTO
    *       required: true
    *       content:
    *         application/json:
    *           schema:
-   *             $ref: '#/components/schemas/CreateSpendControlRequestDTO'
+   *             $ref: '#/components/schemas/UpdateSpendControlRequestDTO'
    *     responses:
-   *       201:
-   *         description: Created
+   *       200:
+   *         description: OK
    *         content:
    *           application/json:
    *             schema:
@@ -30,18 +37,12 @@ export class CreateSpendControlController {
    *               properties:
    *                 status:
    *                   type: number
-   *                   example: 201
+   *                   example: 200
    *                 message:
    *                   type: string
-   *                   example: 'Created'
+   *                   example: 'Ok'
    *                 data:
    *                   $ref: '#/components/schemas/SpendControlResponseDTO'
-   *       400:
-   *         description: Bad Request
-   *         content:
-   *           application/json:
-   *             schema:
-   *               $ref: '#/components/schemas/BadRequestDTO'
    *       401:
    *         description: Unauthorized
    *         content:
@@ -68,13 +69,13 @@ export class CreateSpendControlController {
    *               $ref: '#/components/schemas/InternalServerErrorDTO'
    */
   public static async handle(
-    req: TypedRequest<void, CreateSpendControlRequestDTO, void>,
+    req: TypedRequest<{ spendControlId: string }, UpdateSpendControlRequestDTO, void>,
     res: Response,
     next: NextFunction,
   ) {
     try {
-      const sut = CreateSpendControlUseCaseFactory.create(req.account);
-      const response = await sut.execute(CreateSpendControlRequestDTO.create(req.body));
+      const sut = UpdateSpendControlUseCaseFactory.create(req.account);
+      const response = await sut.execute(req.params.spendControlId, UpdateSpendControlRequestDTO.create(req.body));
       return res.sendResponse(200, response);
     } catch (error) {
       next(error);
