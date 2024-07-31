@@ -1,5 +1,5 @@
 import { SpendCategory as SpendCategoryEntity } from '@prisma/client';
-import { SpendCategory } from '../../../domain/entities/spend-category';
+import { SpendCategory } from '../../../domain/entities/spend-category/spend-category';
 
 export class SpendCategoryMapper {
   public static toDomain(data: SpendCategoryEntity): SpendCategory {

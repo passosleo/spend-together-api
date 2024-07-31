@@ -1,5 +1,5 @@
 import { config } from '../../../config/app.config';
-import { User } from '../../../domain/entities/user';
+import { User } from '../../../domain/entities/user/user';
 import { IUserRepository } from '../../../domain/repositories/user/user-repository';
 import { UserMapper } from '../../../infra/data/mappers/user-mapper';
 import { Exception } from '../../../infra/exception';

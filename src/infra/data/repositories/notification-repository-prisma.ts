@@ -1,4 +1,4 @@
-import { Notification } from '../../../domain/entities/notification';
+import { Notification } from '../../../domain/entities/notification/notification';
 import { INotificationRepository } from '../../../domain/repositories/notification/notification-repository';
 import { CountNotificationData } from '../../../domain/repositories/notification/notification-repository.types';
 import { prisma } from '../db';

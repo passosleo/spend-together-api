@@ -1,4 +1,4 @@
-import { User } from '../../entities/user';
+import { User } from '../../entities/user/user';
 import { UserUniqueKeyData } from './user-repository.types';
 
 export interface IUserRepository {

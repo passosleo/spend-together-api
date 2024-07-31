@@ -22,7 +22,7 @@ export class SpendControl {
   users: SpendControlUser[];
 
   constructor(data: CreateSpendControlData) {
-    this.spendControlId = data.spendControlId as string;
+    this.spendControlId = data.spendControlId!;
     this.name = data.name;
     this.description = data.description ?? null;
     this.color = data.color ?? null;

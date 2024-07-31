@@ -4,7 +4,7 @@ import { SpendControlMapper } from '../mappers/spend-control-mapper';
 import { Prisma } from '@prisma/client';
 import { prisma } from '../db';
 
-export class SpendControlRepository implements ISpendControlRepository {
+export class SpendControlRepositoryPrisma implements ISpendControlRepository {
   private spendControlUserFields: Prisma.SpendControlUsersSelect = {
     user: {
       select: {

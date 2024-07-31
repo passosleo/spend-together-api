@@ -1,5 +1,5 @@
 import { PrivacyPolicy as PrivacyPolicyEntity } from '@prisma/client';
-import { PrivacyPolicy } from '../../../domain/entities/privacy-policy';
+import { PrivacyPolicy } from '../../../domain/entities/privacy-policy/privacy-policy';
 
 export class PrivacyPolicyMapper {
   public static toDomain(data: PrivacyPolicyEntity): PrivacyPolicy {

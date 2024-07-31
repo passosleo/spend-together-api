@@ -1,4 +1,4 @@
-import { Notification } from '../../entities/notification';
+import { Notification } from '../../entities/notification/notification';
 import { CountNotificationData } from './notification-repository.types';
 
 export interface INotificationRepository {

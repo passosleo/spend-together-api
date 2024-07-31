@@ -1,7 +1,7 @@
 import { UserUniqueKeyData } from '../../../domain/repositories/user/user-repository.types';
 import { IUserRepository } from '../../../domain/repositories/user/user-repository';
 import { UserMapper } from '../mappers/user-mapper';
-import { User } from '../../../domain/entities/user';
+import { User } from '../../../domain/entities/user/user';
 import { prisma } from '../db';
 
 export class UserRepositoryPrisma implements IUserRepository {

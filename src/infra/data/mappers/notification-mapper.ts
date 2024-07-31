@@ -1,5 +1,5 @@
 import { Notification as NotificationEntity } from '@prisma/client';
-import { Notification } from '../../../domain/entities/notification';
+import { Notification } from '../../../domain/entities/notification/notification';
 
 export class NotificationMapper {
   public static toDomain(data: NotificationEntity): Notification {

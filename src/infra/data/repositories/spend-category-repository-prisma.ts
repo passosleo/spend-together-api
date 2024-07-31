@@ -1,6 +1,6 @@
 import { ISpendCategoryRepository } from '../../../domain/repositories/spend-category/spend-category-repository';
 import { SpendCategoryMapper } from '../mappers/spend-category-mapper';
-import { SpendCategory } from '../../../domain/entities/spend-category';
+import { SpendCategory } from '../../../domain/entities/spend-category/spend-category';
 import { prisma } from '../db';
 
 export class SpendCategoryRepositoryPrisma implements ISpendCategoryRepository {

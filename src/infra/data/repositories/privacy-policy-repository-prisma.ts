@@ -1,4 +1,4 @@
-import { PrivacyPolicy } from '../../../domain/entities/privacy-policy';
+import { PrivacyPolicy } from '../../../domain/entities/privacy-policy/privacy-policy';
 import { IPrivacyPolicyRepository } from '../../../domain/repositories/privacy-policy/privacy-policy-repository';
 import { prisma } from '../db';
 import { PrivacyPolicyMapper } from '../mappers/privacy-policy-mapper';
