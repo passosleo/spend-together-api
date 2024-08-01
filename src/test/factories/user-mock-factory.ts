@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import { User } from '../../domain/entities/user/user';
 import { UserAccountDTO } from '../../domain/dtos/user/user-account-dto';
 
-export class UserFactory {
+export class UserMockFactory {
   public static createAccount(data: Partial<User> = {}): UserAccountDTO {
     return UserAccountDTO.create({
       userId: data.userId || faker.string.uuid(),

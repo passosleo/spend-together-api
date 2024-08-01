@@ -1,5 +1,5 @@
-import { NotificationFactory } from './../../../../test/factories/notification-factory';
-import { UserFactory } from './../../../../test/factories/user-factory';
+import { NotificationMockFactory } from '../../../../test/factories/notification-mock-factory';
+import { UserMockFactory } from '../../../../test/factories/user-mock-factory';
 import { NotificationRepositoryMock } from './../../../../test/repositories/notification-repository-mock';
 import { AuthProviderMock } from './../../../../test/providers/auth-provider-mock';
 import { DeleteNotificationUseCase } from './../delete-notification-use-case';
@@ -13,7 +13,7 @@ describe('Delete notification use case', () => {
   });
 
   it('should throw NOT_FOUND exception if notification does not exist', async () => {
-    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserFactory.createAccount());
+    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserMockFactory.createAccount());
     NotificationRepositoryMock.findOne.mockResolvedValue(null);
 
     await expect(sut.execute('notificationId')).rejects.toBeInstanceOf(Exception);
@@ -24,8 +24,8 @@ describe('Delete notification use case', () => {
   });
 
   it('should delete notification', async () => {
-    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserFactory.createAccount());
-    NotificationRepositoryMock.findOne.mockResolvedValue(NotificationFactory.createEntity());
+    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserMockFactory.createAccount());
+    NotificationRepositoryMock.findOne.mockResolvedValue(NotificationMockFactory.createEntity());
 
     await sut.execute('notificationId');
 

@@ -1,6 +1,6 @@
-import { NotificationFactory } from './../../../../test/factories/notification-factory';
+import { NotificationMockFactory } from '../../../../test/factories/notification-mock-factory';
 import { ListNotificationsUseCase } from './../list-notifications-use-case';
-import { UserFactory } from './../../../../test/factories/user-factory';
+import { UserMockFactory } from '../../../../test/factories/user-mock-factory';
 import { NotificationRepositoryMock } from './../../../../test/repositories/notification-repository-mock';
 import { AuthProviderMock } from './../../../../test/providers/auth-provider-mock';
 import { NotificationResponseDTO } from '../../../../infra/http/dtos/notification/notification-response-dto';
@@ -13,9 +13,9 @@ describe('List notifications use case', () => {
     jest.clearAllMocks();
   });
 
-  it('should list notifications', async () => {
-    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserFactory.createAccount());
-    NotificationRepositoryMock.findAll.mockResolvedValue(NotificationFactory.createEntities(5));
+  it('should list notifications and update them as read', async () => {
+    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserMockFactory.createAccount());
+    NotificationRepositoryMock.findAll.mockResolvedValue(NotificationMockFactory.createEntities(5));
 
     const result = await sut.execute();
 

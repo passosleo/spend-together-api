@@ -1,5 +1,5 @@
 import { GetUnreadNotificationsUseCase } from './../get-unread-notifications-use-case';
-import { UserFactory } from './../../../../test/factories/user-factory';
+import { UserMockFactory } from '../../../../test/factories/user-mock-factory';
 import { NotificationRepositoryMock } from './../../../../test/repositories/notification-repository-mock';
 import { AuthProviderMock } from './../../../../test/providers/auth-provider-mock';
 import { UnreadNotificationResponseDTO } from '../../../../infra/http/dtos/notification/unread-notification-response-dto';
@@ -13,7 +13,7 @@ describe('Get unread notifications use case', () => {
   });
 
   it('should return unread notifications', async () => {
-    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserFactory.createAccount());
+    AuthProviderMock.getAuthenticatedUser.mockReturnValue(UserMockFactory.createAccount());
     NotificationRepositoryMock.count.mockResolvedValue(10);
 
     const result = await sut.execute();

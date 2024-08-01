@@ -1,7 +1,7 @@
 import { Notification } from '../../domain/entities/notification/notification';
 import { faker } from '@faker-js/faker';
 
-export class NotificationFactory {
+export class NotificationMockFactory {
   public static createEntity(data: Partial<Notification> = {}): Notification {
     return Notification.create({
       notificationId: data.notificationId || faker.string.uuid(),
