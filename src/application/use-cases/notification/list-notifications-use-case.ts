@@ -20,6 +20,6 @@ export class ListNotificationsUseCase {
 
     await Promise.all(setAllRead);
 
-    return notifications.map((notification) => NotificationResponseDTO.create(notification));
+    return notifications.map(NotificationResponseDTO.create);
   }
 }
