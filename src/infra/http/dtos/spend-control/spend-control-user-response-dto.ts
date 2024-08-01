@@ -1,3 +1,5 @@
+import { UserSummaryResponseDTO } from '../user/user-summary-response-dto';
+
 /**
  * @openapi
  * components:
@@ -27,21 +29,13 @@
  *           nullable: true
  */
 export class SpendControlUserResponseDTO {
-  user: {
-    username: string;
-    name: string | null;
-    avatar: string | null;
-  };
+  user: UserSummaryResponseDTO;
   isOwner: boolean;
   invitedAt: Date;
   joinedAt: Date | null;
 
   constructor(data: SpendControlUserResponseDTO) {
-    this.user = {
-      username: data.user.username,
-      name: data.user.name,
-      avatar: data.user.avatar,
-    };
+    this.user = UserSummaryResponseDTO.create(data.user);
     this.isOwner = data.isOwner;
     this.invitedAt = data.invitedAt;
     this.joinedAt = data.joinedAt;

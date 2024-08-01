@@ -1,5 +1,5 @@
 import { SpendCategory } from '../spend-category/spend-category';
-import { SpendUser } from './spend-user';
+import { UserSummary } from '../user/user-summary';
 
 export interface CreateSpend {
   spendId?: string;
@@ -12,7 +12,7 @@ export interface CreateSpend {
   createdAt?: Date;
   updatedAt?: Date;
   spendCategory?: SpendCategory;
-  user?: SpendUser;
+  user?: UserSummary;
 }
 
 export class Spend {
@@ -26,7 +26,7 @@ export class Spend {
   createdAt: Date;
   updatedAt: Date;
   spendCategory: SpendCategory;
-  user: SpendUser;
+  user: UserSummary;
 
   constructor(data: CreateSpend) {
     this.spendId = data.spendId!;
@@ -39,7 +39,7 @@ export class Spend {
     this.createdAt = data.createdAt ?? new Date();
     this.updatedAt = data.updatedAt ?? new Date();
     this.spendCategory = data.spendCategory ? SpendCategory.create(data.spendCategory) : ({} as SpendCategory);
-    this.user = data.user ? SpendUser.create(data.user) : ({} as SpendUser);
+    this.user = data.user ? UserSummary.create(data.user) : ({} as UserSummary);
   }
 
   public static create(data: CreateSpend): Spend {

@@ -35,7 +35,7 @@ export class CreateSpendController {
    *                   type: string
    *                   example: 'Created'
    *                 data:
-   *                   $ref: '#/components/schemas/SpendDTO'
+   *                   $ref: '#/components/schemas/SpendResponseDTO'
    *       400:
    *         description: Bad Request
    *         content:

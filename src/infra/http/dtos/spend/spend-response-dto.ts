@@ -1,5 +1,5 @@
 import { SpendCategoryResponseDTO } from '../spend-category/spend-category-response-dto';
-import { SpendUserResponseDTO } from './spend-user-response-dto';
+import { UserSummaryResponseDTO } from '../user/user-summary-response-dto';
 
 /**
  * @openapi
@@ -35,7 +35,7 @@ import { SpendUserResponseDTO } from './spend-user-response-dto';
  *         spendCategory:
  *           $ref: '#/components/schemas/SpendCategoryResponseDTO'
  *         user:
- *           $ref: '#/components/schemas/SpendUserResponseDTO'
+ *           $ref: '#/components/schemas/UserSummaryResponseDTO'
  */
 export class SpendResponseDTO {
   spendId: string;
@@ -48,7 +48,7 @@ export class SpendResponseDTO {
   createdAt: Date;
   updatedAt: Date;
   spendCategory: SpendCategoryResponseDTO;
-  user: SpendUserResponseDTO;
+  user: UserSummaryResponseDTO;
 
   constructor(data: SpendResponseDTO) {
     this.spendId = data.spendId;
@@ -61,7 +61,7 @@ export class SpendResponseDTO {
     this.createdAt = data.createdAt;
     this.updatedAt = data.updatedAt;
     this.spendCategory = SpendCategoryResponseDTO.create(data.spendCategory);
-    this.user = SpendUserResponseDTO.create(data.user);
+    this.user = UserSummaryResponseDTO.create(data.user);
   }
 
   public static create(data: SpendResponseDTO): SpendResponseDTO {
