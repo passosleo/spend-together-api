@@ -2,7 +2,7 @@
  * @openapi
  * components:
  *   schemas:
- *     SpendControlUserDTO:
+ *     SpendControlUserResponseDTO:
  *       type: object
  *       properties:
  *         user:
@@ -26,7 +26,7 @@
  *           format: date-time
  *           nullable: true
  */
-export class SpendControlUserDTO {
+export class SpendControlUserResponseDTO {
   user: {
     username: string;
     name: string | null;
@@ -36,7 +36,7 @@ export class SpendControlUserDTO {
   invitedAt: Date;
   joinedAt: Date | null;
 
-  constructor(data: SpendControlUserDTO) {
+  constructor(data: SpendControlUserResponseDTO) {
     this.user = {
       username: data.user.username,
       name: data.user.name,
@@ -47,7 +47,7 @@ export class SpendControlUserDTO {
     this.joinedAt = data.joinedAt;
   }
 
-  public static create(data: SpendControlUserDTO): SpendControlUserDTO {
-    return new SpendControlUserDTO(data);
+  public static create(data: SpendControlUserResponseDTO): SpendControlUserResponseDTO {
+    return new SpendControlUserResponseDTO(data);
   }
 }

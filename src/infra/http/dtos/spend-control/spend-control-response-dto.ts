@@ -1,4 +1,4 @@
-import { SpendControlUserDTO } from './spend-control-user-dto';
+import { SpendControlUserResponseDTO } from './spend-control-user-response-dto';
 
 /**
  * @openapi
@@ -29,7 +29,7 @@ import { SpendControlUserDTO } from './spend-control-user-dto';
  *           type: array
  *           items:
  *             type: object
- *             $ref: '#/components/schemas/SpendControlUserDTO'
+ *             $ref: '#/components/schemas/SpendControlUserResponseDTO'
  *         isShared:
  *           type: boolean
  *         balance:
@@ -49,7 +49,7 @@ export class SpendControlResponseDTO {
   isEnabled: boolean;
   createdAt: Date;
   updatedAt: Date;
-  users: SpendControlUserDTO[];
+  users: SpendControlUserResponseDTO[];
   isShared: boolean;
   balance: number;
   totalSpent: number;
@@ -64,7 +64,7 @@ export class SpendControlResponseDTO {
     this.isEnabled = data.isEnabled;
     this.createdAt = data.createdAt;
     this.updatedAt = data.updatedAt;
-    this.users = data.users.map((user) => SpendControlUserDTO.create(user));
+    this.users = data.users.map((user) => SpendControlUserResponseDTO.create(user));
     this.isShared = this.users.length > 1;
     this.balance = data.balance;
     this.totalSpent = data.totalSpent;
