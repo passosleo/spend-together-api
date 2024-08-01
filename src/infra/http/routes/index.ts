@@ -4,6 +4,7 @@ import { privacyPolicyRoutes } from './privacy-policy/privacy-policy-routes';
 import { signInRoutes } from './sign-in/sign-in-routes';
 import { signUpRoutes } from './sign-up/sign-up-routes';
 import { spendCategoryRoutes } from './spend-category/spend-category-routes';
+import { spendControlInviteRoutes } from './spend-control-invite/spend-control-invite-routes';
 import { spendControlRoutes } from './spend-control/spend-control-routes';
 import { spendRoutes } from './spend/spend-routes';
 import { userRoutes } from './user/user-routes';
@@ -17,4 +18,5 @@ export const routes: Route[] = [
   ...notificationRoutes,
   ...spendControlRoutes,
   ...spendRoutes,
+  ...spendControlInviteRoutes,
 ];

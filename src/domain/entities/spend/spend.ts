@@ -1,7 +1,7 @@
 import { SpendCategory } from '../spend-category/spend-category';
 import { UserSummary } from '../user/user-summary';
 
-export interface CreateSpend {
+export interface CreateSpendData {
   spendId?: string;
   spendControlId: string;
   spendCategoryId: string;
@@ -28,7 +28,7 @@ export class Spend {
   spendCategory: SpendCategory;
   user: UserSummary;
 
-  constructor(data: CreateSpend) {
+  constructor(data: CreateSpendData) {
     this.spendId = data.spendId!;
     this.spendControlId = data.spendControlId;
     this.spendCategoryId = data.spendCategoryId;
@@ -42,7 +42,7 @@ export class Spend {
     this.user = data.user ? UserSummary.create(data.user) : ({} as UserSummary);
   }
 
-  public static create(data: CreateSpend): Spend {
+  public static create(data: CreateSpendData): Spend {
     return new Spend(data);
   }
 }
