@@ -34,8 +34,8 @@ export class DeleteUserAccountController {
   public static async handle(req: Request, res: Response, next: NextFunction) {
     try {
       const sut = DeleteUserAccountUseCaseFactory.create(req.account);
-      const response = await sut.execute();
-      return res.sendResponse(204, response);
+      await sut.execute();
+      return res.sendResponse(204);
     } catch (error) {
       next(error);
     }

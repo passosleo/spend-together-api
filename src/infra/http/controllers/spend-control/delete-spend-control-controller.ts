@@ -54,8 +54,8 @@ export class DeleteSpendControlController {
   ) {
     try {
       const sut = DeleteSpendControlUseCaseFactory.create(req.account);
-      const response = await sut.execute(req.params.spendControlId);
-      return res.sendResponse(204, response);
+      await sut.execute(req.params.spendControlId);
+      return res.sendResponse(204);
     } catch (error) {
       next(error);
     }

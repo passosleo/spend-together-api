@@ -1,15 +1,15 @@
+import { DeleteSpendUseCaseFactory } from './../../../factories/spend/delete-spend-use-case-factory';
 import { Response, NextFunction } from 'express';
 import { TypedRequest } from '../../../types/generic';
-import { GetSpendByIdUseCaseFactory } from '../../../factories/spend/get-spend-by-id-use-case-factory';
 
-export class GetSpendByIdController {
+export class DeleteSpendController {
   /**
    * @openapi
    * /api/v1/spend/{spendId}:
-   *   get:
+   *   delete:
    *     tags:
    *       - Spend
-   *     summary: Get spend by id
+   *     summary: Delete spend
    *     security:
    *       - JWTAuth: []
    *     parameters:
@@ -20,21 +20,14 @@ export class GetSpendByIdController {
    *           type: string
    *           format: uuid
    *     responses:
-   *       200:
-   *         description: OK
+   *       204:
+   *         description: No Content
+   *       400:
+   *         description: Bad Request
    *         content:
    *           application/json:
    *             schema:
-   *               type: object
-   *               properties:
-   *                 status:
-   *                   type: number
-   *                   example: 200
-   *                 message:
-   *                   type: string
-   *                   example: 'OK'
-   *                 data:
-   *                   $ref: '#/components/schemas/SpendResponseDTO'
+   *               $ref: '#/components/schemas/BadRequestDTO'
    *       401:
    *         description: Unauthorized
    *         content:
@@ -56,9 +49,9 @@ export class GetSpendByIdController {
    */
   public static async handle(req: TypedRequest<{ spendId: string }, void, void>, res: Response, next: NextFunction) {
     try {
-      const sut = GetSpendByIdUseCaseFactory.create(req.account);
-      const response = await sut.execute(req.params.spendId);
-      return res.sendResponse(200, response);
+      const sut = DeleteSpendUseCaseFactory.create(req.account);
+      await sut.execute(req.params.spendId);
+      return res.sendResponse(204);
     } catch (error) {
       next(error);
     }
