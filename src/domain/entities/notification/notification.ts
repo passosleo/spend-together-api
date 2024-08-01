@@ -22,7 +22,7 @@ export class Notification {
   updatedAt: Date;
 
   constructor(data: CreateNotificationData) {
-    this.notificationId = data.notificationId as string;
+    this.notificationId = data.notificationId!;
     this.userId = data.userId;
     this.title = data.title;
     this.content = data.content;

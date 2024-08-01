@@ -10,6 +10,7 @@ import { CreateSpendControlRequestDTO } from '../../../infra/http/dtos/spend-con
 import { SpendControlResponseDTO } from '../../../infra/http/dtos/spend-control/spend-control-response-dto';
 import { IAuthProvider } from '../../providers/auth/auth-provider.types';
 import { SpendBalance } from '../../../domain/entities/spend/spend-balance';
+import { User } from '../../../domain/entities/user/user';
 
 export class CreateSpendControlUseCase {
   constructor(
@@ -81,7 +82,7 @@ export class CreateSpendControlUseCase {
       throw new Exception('NOT_FOUND', 'Some invited users were not found');
     }
 
-    const invitedUsers = searchResult.filter((user) => !!user);
+    const invitedUsers = searchResult.filter((user) => user instanceof User) as User[];
 
     const hasInvalidUser = invitedUsers.some((invitedUser) => !invitedUser.isPublic);
 
