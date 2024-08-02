@@ -64,7 +64,7 @@ export class SpendControlResponseDTO {
     this.isEnabled = data.isEnabled;
     this.createdAt = data.createdAt;
     this.updatedAt = data.updatedAt;
-    this.users = data.users.map((user) => SpendControlUserResponseDTO.create(user));
+    this.users = data.users.map(SpendControlUserResponseDTO.create);
     this.isShared = this.users.length > 1;
     this.balance = data.balance;
     this.totalSpent = data.totalSpent;

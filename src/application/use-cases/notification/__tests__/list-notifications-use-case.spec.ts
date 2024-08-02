@@ -5,7 +5,7 @@ import { NotificationRepositoryMock } from './../../../../test/repositories/noti
 import { AuthProviderMock } from './../../../../test/providers/auth-provider-mock';
 import { NotificationResponseDTO } from '../../../../infra/http/dtos/notification/notification-response-dto';
 
-describe('List notifications use case', () => {
+describe('ListNotificationsUseCase', () => {
   let sut: ListNotificationsUseCase;
 
   beforeEach(() => {

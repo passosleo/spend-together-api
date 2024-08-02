@@ -61,7 +61,7 @@ export class SpendRepositoryPrisma implements ISpendRepository {
         },
       });
 
-      return models.map((model) => SpendMapper.toDomain(model));
+      return models.map(SpendMapper.toDomain);
     } finally {
       await prisma.$disconnect();
     }

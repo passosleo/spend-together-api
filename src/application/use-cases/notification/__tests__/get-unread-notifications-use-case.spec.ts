@@ -4,7 +4,7 @@ import { NotificationRepositoryMock } from './../../../../test/repositories/noti
 import { AuthProviderMock } from './../../../../test/providers/auth-provider-mock';
 import { UnreadNotificationResponseDTO } from '../../../../infra/http/dtos/notification/unread-notification-response-dto';
 
-describe('Get unread notifications use case', () => {
+describe('GetUnreadNotificationsUseCase', () => {
   let sut: GetUnreadNotificationsUseCase;
 
   beforeEach(() => {

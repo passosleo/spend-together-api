@@ -62,7 +62,7 @@ export class SpendControlInviteRepositoryPrisma implements ISpendControlInviteRe
         },
       });
 
-      return models.map((model) => SpendControlInviteMapper.toDomain(model));
+      return models.map(SpendControlInviteMapper.toDomain);
     } finally {
       await prisma.$disconnect();
     }

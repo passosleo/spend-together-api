@@ -11,6 +11,6 @@ export class ListSpendsBySpendControlIdUseCase {
   public async execute(spendControlId: string): Promise<SpendResponseDTO[]> {
     const userAccount = this.authProvider.getAuthenticatedUser();
     const spends = await this.spendRepository.findAll(spendControlId, userAccount.userId);
-    return spends.map((spend) => SpendResponseDTO.create(spend));
+    return spends.map(SpendResponseDTO.create);
   }
 }

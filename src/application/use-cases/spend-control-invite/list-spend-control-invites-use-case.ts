@@ -11,6 +11,6 @@ export class ListSpendControlInvitesUseCase {
   public async execute(): Promise<SpendControlInviteResponseDTO[]> {
     const userAccount = this.authProvider.getAuthenticatedUser();
     const invites = await this.spendControlInviteRepository.findAll(userAccount.userId);
-    return invites.map((invite) => SpendControlInviteResponseDTO.create(invite));
+    return invites.map(SpendControlInviteResponseDTO.create);
   }
 }

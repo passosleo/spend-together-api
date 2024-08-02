@@ -12,6 +12,6 @@ export class SearchUserUseCase {
   public async execute({ username }: SearchUserRequestDTO): Promise<SearchUserResponseDTO[]> {
     const userAccount = this.authProvider.getAuthenticatedUser();
     const users = await this.userRepository.findAllByUsername(username, userAccount.username);
-    return users.map((user) => SearchUserResponseDTO.create(user));
+    return users.map(SearchUserResponseDTO.create);
   }
 }

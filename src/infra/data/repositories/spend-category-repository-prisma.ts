@@ -18,7 +18,7 @@ export class SpendCategoryRepositoryPrisma implements ISpendCategoryRepository {
   public async findAll(): Promise<SpendCategory[]> {
     try {
       const models = await prisma.spendCategory.findMany();
-      return models.map((model) => SpendCategoryMapper.toDomain(model));
+      return models.map(SpendCategoryMapper.toDomain);
     } finally {
       await prisma.$disconnect();
     }

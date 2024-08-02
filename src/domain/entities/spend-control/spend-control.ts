@@ -29,7 +29,7 @@ export class SpendControl {
     this.isEnabled = data.isEnabled ?? true;
     this.createdAt = data.createdAt ?? new Date();
     this.updatedAt = data.updatedAt ?? new Date();
-    this.users = (data.users ?? []).map((user) => SpendControlUser.create(user));
+    this.users = (data.users ?? []).map(SpendControlUser.create);
   }
 
   public static create(data: CreateSpendControlData): SpendControl {

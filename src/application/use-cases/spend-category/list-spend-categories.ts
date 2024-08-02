@@ -6,6 +6,6 @@ export class ListSpendCategoriesUseCase {
 
   public async execute(): Promise<SpendCategoryResponseDTO[]> {
     const spendCategories = await this.spendCategoryRepository.findAll();
-    return spendCategories.map((spendCategory) => SpendCategoryResponseDTO.create(spendCategory));
+    return spendCategories.map(SpendCategoryResponseDTO.create);
   }
 }

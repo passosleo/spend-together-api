@@ -44,7 +44,7 @@ export class UserRepositoryPrisma implements IUserRepository {
     try {
       const models = await prisma.user.findMany();
 
-      return models.map((model) => UserMapper.toDomain(model));
+      return models.map(UserMapper.toDomain);
     } finally {
       await prisma.$disconnect();
     }
@@ -72,7 +72,7 @@ export class UserRepositoryPrisma implements IUserRepository {
         take,
       });
 
-      return models.map((model) => UserMapper.toDomain(model));
+      return models.map(UserMapper.toDomain);
     } finally {
       await prisma.$disconnect();
     }

@@ -4,7 +4,7 @@ import { GetPrivacyPolicyUseCase } from './../get-privacy-policy-use-case';
 import { PrivacyPolicyResponseDTO } from '../../../../infra/http/dtos/privacy-policy/privacy-policy-response-dto';
 import { Exception } from '../../../../infra/exception';
 
-describe('Get privacy policy use case', () => {
+describe('GetPrivacyPolicyUseCase', () => {
   let sut: GetPrivacyPolicyUseCase;
 
   beforeEach(() => {

@@ -37,7 +37,7 @@ export class NotificationRepositoryPrisma implements INotificationRepository {
         orderBy: { createdAt: 'desc' },
       });
 
-      return models.map((model) => NotificationMapper.toDomain(model));
+      return models.map(NotificationMapper.toDomain);
     } finally {
       await prisma.$disconnect();
     }

@@ -4,7 +4,7 @@ import { NotificationRepositoryMock } from './../../../../test/repositories/noti
 import { AuthProviderMock } from './../../../../test/providers/auth-provider-mock';
 import { DeleteNotificationUseCase } from './../delete-notification-use-case';
 import { Exception } from '../../../../infra/exception';
-describe('Delete notification use case', () => {
+describe('DeleteNotificationUseCase', () => {
   let sut: DeleteNotificationUseCase;
 
   beforeEach(() => {

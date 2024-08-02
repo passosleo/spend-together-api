@@ -5,7 +5,7 @@ import { AuthProviderMock } from './../../../../test/providers/auth-provider-moc
 import { ListSpendsBySpendControlIdUseCase } from './../list-spends-by-spend-control-id-use-case';
 import { SpendResponseDTO } from '../../../../infra/http/dtos/spend/spend-response-dto';
 
-describe('List spends by spend control id use case', () => {
+describe('ListSpendsBySpendControlIdUseCase', () => {
   let sut: ListSpendsBySpendControlIdUseCase;
 
   beforeEach(() => {
