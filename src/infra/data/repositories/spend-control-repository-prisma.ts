@@ -3,6 +3,8 @@ import { SpendControl } from '../../../domain/entities/spend-control/spend-contr
 import { SpendControlMapper } from '../mappers/spend-control-mapper';
 import { Prisma } from '@prisma/client';
 import { prisma } from '../db';
+import { SpendControlSummary } from '../../../domain/entities/spend-control/spend-control-summary';
+import { SpendControlSummaryMapper } from '../mappers/spend-control-summary-mapper';
 
 export class SpendControlRepositoryPrisma implements ISpendControlRepository {
   private spendControlUserFields: Prisma.SpendControlUsersSelect = {
@@ -138,6 +140,19 @@ export class SpendControlRepositoryPrisma implements ISpendControlRepository {
       return SpendControlMapper.toDomain(model);
     } finally {
       prisma.$disconnect();
+    }
+  }
+
+  public async getSummary(userId: string): Promise<SpendControlSummary[]> {
+    try {
+      const models = await prisma.spendControl.findMany({
+        where: { users: { some: { userId, joinedAt: { not: null } } } },
+        orderBy: { createdAt: 'desc' },
+      });
+
+      return models.map(SpendControlSummaryMapper.toDomain);
+    } finally {
+      await prisma.$disconnect();
     }
   }
 }

@@ -8,13 +8,20 @@ import { UpdateSpendControlSchema } from '../../schemas/spend-control/update-spe
 import { UpdateSpendControlController } from '../../controllers/spend-control/update-spend-control-controller';
 import { DeleteSpendControlController } from '../../controllers/spend-control/delete-spend-control-controller';
 import { DeleteSpendControlSchema } from '../../schemas/spend-control/delete-spend-control-schema';
+import { ListSpendControlsSummaryController } from '../../controllers/spend-control/list-spend-controls-summary-controller';
 
 export const spendControlRoutes: Route[] = [
   {
-    path: '/api/v1/spend-control',
+    path: '/api/v1/spend-control/list',
     method: 'GET',
     auth: true,
     controller: ListSpendControlsController.handle,
+  },
+  {
+    path: '/api/v1/spend-control/list/summary',
+    method: 'GET',
+    auth: true,
+    controller: ListSpendControlsSummaryController.handle,
   },
   {
     path: '/api/v1/spend-control/:spendControlId',

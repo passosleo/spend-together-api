@@ -1,14 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
-import { ListSpendControlsUseCaseFactory } from '../../../factories/spend-control/list-spend-controls-use-case-factory';
+import { ListSpendControlsSummaryUseCaseFactory } from '../../../factories/spend-control/list-spend-controls-summary-use-case-factory';
 
-export class ListSpendControlsController {
+export class ListSpendControlsSummaryController {
   /**
    * @openapi
-   * /api/v1/spend-control/list:
+   * /api/v1/spend-control/list/summary:
    *   get:
    *     tags:
    *       - Spend Control
-   *     summary: List spend controls
+   *     summary: List spend controls summary
    *     security:
    *       - JWTAuth: []
    *     responses:
@@ -28,7 +28,7 @@ export class ListSpendControlsController {
    *                 data:
    *                   type: array
    *                   items:
-   *                     $ref: '#/components/schemas/SpendControlResponseDTO'
+   *                     $ref: '#/components/schemas/SpendControlSummaryResponseDTO'
    *       401:
    *         description: Unauthorized
    *         content:
@@ -44,7 +44,7 @@ export class ListSpendControlsController {
    */
   public static async handle(req: Request, res: Response, next: NextFunction) {
     try {
-      const sut = ListSpendControlsUseCaseFactory.create(req.account);
+      const sut = ListSpendControlsSummaryUseCaseFactory.create(req.account);
       const response = await sut.execute();
       return res.sendResponse(200, response);
     } catch (error) {
