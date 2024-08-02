@@ -1,5 +1,5 @@
 import { SpendCategoryRepositoryPrisma } from '../../data/repositories/spend-category-repository-prisma';
-import { ListSpendCategoriesUseCase } from './../../../application/use-cases/spend-category/list-spend-categories';
+import { ListSpendCategoriesUseCase } from '../../../application/use-cases/spend-category/list-spend-categories-use-case';
 
 export class ListSpendCategoriesUseCaseFactory {
   public static create(): ListSpendCategoriesUseCase {
