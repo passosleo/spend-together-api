@@ -1,4 +1,4 @@
-import { INumberHelper } from '../../../application/helpers/number';
+import { INumberHelper } from '../../../application/helpers/number/number-helper.types';
 
 export class NumberHelper implements INumberHelper {
   codeGenerator(length = 6, asString = false) {
