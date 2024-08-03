@@ -21,11 +21,11 @@ export class GetSpendControlByIdUseCase {
       throw new Exception('NOT_FOUND', 'Spend Control not found');
     }
 
-    const balance = await this.spendCalculatorService.calculateBalance(spendControl, userAccount.userId);
-
     if (!this.canUserAccessSpendControl(spendControl, userAccount)) {
       throw new Exception('FORBIDDEN', 'User cannot access this spend control');
     }
+
+    const balance = await this.spendCalculatorService.calculateBalance(spendControl, userAccount.userId);
 
     return SpendControlResponseDTO.create({
       ...spendControl,
