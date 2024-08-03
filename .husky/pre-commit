@@ -9,6 +9,7 @@ run_command() {
   echo "${BLUE}--------------- Running: $1 ---------------${NC}"
   if eval $1; then
     echo "${GREEN}--------------- ✔ $2 succeeded! ---------------${NC}"
+    echo ""
   else
     echo "${RED}--------------- ✖ $2 failed! ---------------${NC}"
     exit 1
