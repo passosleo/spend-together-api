@@ -1,1 +1,19 @@
-npm run pre-commit
+#!/bin/sh
+
+# Definições de cores
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m' # Sem cor
+
+run_command() {
+  echo "${BLUE}Running: $1${NC}"
+  if eval $1; then
+    echo "${GREEN}✔ $2 succeeded!${NC}"
+  else
+    echo "${RED}✖ $2 failed!${NC}"
+    exit 1
+  fi
+}
+
+run_command "npm run pre-commit" "Pre-commit script"
