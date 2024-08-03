@@ -1,5 +1,5 @@
 import { authenticationMiddleware } from '../infra/http/middlewares/auth-middleware';
-import { swaggerSpec } from '../config/swagger.config';
+import { swaggerOptions, swaggerSpec } from '../config/swagger.config';
 import { Application } from '../infra/app';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -14,6 +14,7 @@ const server = new Application({
     enabled: true,
     path: '/api/v1/docs',
     config: swaggerSpec,
+    options: swaggerOptions,
   },
   middlewares: {
     global: [cors(), morgan('dev')],

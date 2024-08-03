@@ -1,8 +1,9 @@
+import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import { config } from './app.config';
 import { version, description } from '../../package.json';
 
-const options: swaggerJsdoc.Options = {
+const spec: swaggerJsdoc.Options = {
   definition: {
     openapi: '3.0.0',
     info: {
@@ -22,4 +23,10 @@ const options: swaggerJsdoc.Options = {
   apis: ['src/**/*.{ts,js}'],
 };
 
-export const swaggerSpec = swaggerJsdoc(options);
+export const swaggerOptions: swaggerUi.SwaggerUiOptions = {
+  customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
+  customCss:
+    '.swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }',
+};
+
+export const swaggerSpec = swaggerJsdoc(spec);

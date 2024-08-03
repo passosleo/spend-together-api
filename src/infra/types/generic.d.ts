@@ -22,11 +22,13 @@ export type SwaggerConfig =
       enabled?: true;
       path: string;
       config: swaggerUi.JsonObject;
+      options?: swaggerUi.SwaggerUiOptions;
     }
   | {
       enabled?: false;
       path?: string;
       config?: swaggerUi.JsonObject;
+      options?: swaggerUi.SwaggerUiOptions;
     };
 
 export type ApplicationConfig = {
