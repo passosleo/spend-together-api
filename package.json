@@ -12,6 +12,7 @@
     "dev": "cross-env NODE_ENV=development nodemon",
     "prebuild": "rimraf ./dist",
     "build": "yarn prebuild && tsc && ts-node build",
+    "vercel-build": "npx prisma generate",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
     "logs:clear": "rimraf ./logs",
     "test": "jest --passWithNoTests --coverage",
