@@ -28,13 +28,13 @@ run_command() {
 
 echo ""
 echo "${BLUE}=====================================================${NC}"
-echo "${BLUE}==${NC} ${YELLOW}Starting pre-commit hooks${NC} ${BLUE}==${NC}"
+echo "${BLUE}==${NC} ${YELLOW}Starting pre-push hooks${NC} ${BLUE}==${NC}"
 echo "${BLUE}=====================================================${NC}"
 echo ""
 
 run_command "npm run test" "Jest tests"
 
 echo "${BLUE}=====================================================${NC}"
-echo "${BLUE}==${NC} ${YELLOW}All pre-commit hooks completed successfully!${NC} ${BLUE}==${NC}"
+echo "${BLUE}==${NC} ${YELLOW}All pre-push hooks completed successfully!${NC} ${BLUE}==${NC}"
 echo "${BLUE}=====================================================${NC}"
 echo ""
