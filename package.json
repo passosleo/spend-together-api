@@ -17,7 +17,9 @@
     "logs:clear": "rimraf ./logs",
     "test": "jest --passWithNoTests --coverage",
     "ts-check": "npx tsc --noEmit",
-    "prepare": "husky"
+    "prepare": "husky",
+    "pre-commit": "yarn ts-check && yarn lint",
+    "pre-push": "yarn test"
   },
   "dependencies": {
     "@prisma/client": "^5.9.1",
@@ -75,5 +77,11 @@
   },
   "resolutions": {
     "@types/mime": "3.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit",
+      "pre-push": "npm run pre-push"
+    }
   }
 }
