@@ -1,6 +1,6 @@
 {
-  "name": "spends-api",
-  "description": "spends-api",
+  "name": "spend-together-api",
+  "description": "spend-together-api",
   "version": "1.0.0",
   "main": "main.js",
   "license": "MIT",

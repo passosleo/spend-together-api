@@ -9,19 +9,19 @@ log4js.configure({
         pattern: '[%d{dd-MM-yyyy - hh:mm:ss.SSS}] [%p] - %m',
       },
     },
-    file: {
-      type: 'fileSync',
-      filename: './logs/app.log',
-      layout: {
-        type: 'pattern',
-        pattern: '[%d{dd-MM-yyyy - hh:mm:ss.SSS}] [%p] - %m',
-      },
-      maxLogSize: 10485760, // 10MB
-      backups: 3,
-    },
+    // file: {
+    //   type: 'fileSync',
+    //   filename: './logs/app.log',
+    //   layout: {
+    //     type: 'pattern',
+    //     pattern: '[%d{dd-MM-yyyy - hh:mm:ss.SSS}] [%p] - %m',
+    //   },
+    //   maxLogSize: 10485760, // 10MB
+    //   backups: 3,
+    // },
   },
   categories: {
-    default: { appenders: ['console', 'file'], level: 'debug' },
+    default: { appenders: ['console'], level: 'info' },
   },
 });
 
