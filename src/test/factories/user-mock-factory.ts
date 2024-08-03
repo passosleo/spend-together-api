@@ -20,6 +20,10 @@ export class UserMockFactory {
     });
   }
 
+  public static createEntities(amount = 10): User[] {
+    return Array.from({ length: amount }, this.createEntity);
+  }
+
   public static createAccount(data: Partial<User> = {}): UserAccountDTO {
     return UserAccountDTO.create({
       userId: data.userId ?? faker.string.uuid(),
