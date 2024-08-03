@@ -42,7 +42,13 @@ export class Application {
     this.app.use('/public', express.static('public'));
 
     if (this.config.swagger?.enabled) {
-      this.app.use(this.config.swagger.path, swaggerUi.serve, swaggerUi.setup(this.config.swagger.config));
+      this.app.use(
+        this.config.swagger.path,
+        swaggerUi.serve,
+        swaggerUi.setup(this.config.swagger.config, {
+          customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
+        }),
+      );
     }
 
     if (this.middlewares.global) {
